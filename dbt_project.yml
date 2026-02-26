@@ -1,0 +1,15 @@
+name: 'momo_org'
+version: 1.0.0
+config_version: 2
+
+models:
+  momo_org:
+    staging:
+      +materialization: view
+      +on_schema_change: sync_all_columns
+    mart:
+      +materialization: table
+      +on_schema_change: sync_all_columns
+
+    
+    
