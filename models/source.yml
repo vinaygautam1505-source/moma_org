@@ -3,6 +3,6 @@ version: 2
 sources:
   - name: 'source_moma'
     database: MOMA_ORG
-    schema: INPUT_FIVETRAN
+    schema: INPUT_AIREBYTE
     tables:
       - name: SHEET1
