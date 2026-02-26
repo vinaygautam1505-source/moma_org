@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: 'source_moma'
+    database: MOMA_ORG
+    schema: INPUT_FIVETRAN
+    tables:
+      - name: SHEET1
