@@ -5,10 +5,10 @@ config_version: 2
 models:
   momo_org:
     staging:
-      +materialization: view
+      +materialized: view
       +on_schema_change: sync_all_columns
     mart:
-      +materialization: table
+      +materialized: table
       +on_schema_change: sync_all_columns
 
     
