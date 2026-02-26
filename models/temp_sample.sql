@@ -1,1 +1,1 @@
-SELECT * FROM {{ source('spource_moma', 'SHEET1') }}
+SELECT * FROM {{ source('source_moma', 'SHEET1') }}
