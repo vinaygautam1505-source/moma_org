@@ -1,6 +1,6 @@
 name: 'momo_org'
 version: 1.0.0
-config_version: 2
+config-version: 2
 
 models:
   momo_org:
