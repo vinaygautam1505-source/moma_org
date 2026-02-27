@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_moma_cleaned
+  - name: stg_moma_org
     description: "Cleaned MoMA dataset with all relevant data quality tests applied."
     columns:
       - name: object_id
