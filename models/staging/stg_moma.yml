@@ -1,0 +1,108 @@
+version: 2
+
+models:
+  - name: stg_moma_cleaned
+    description: "Cleaned MoMA dataset with all relevant data quality tests applied."
+    columns:
+
+
+      - name: object_id
+        description: "Unique artwork identifier."
+        tests:
+          - not_null
+          - unique
+          - dbt_utils.not_duplicated:
+              combination_of: ["object_id"]
+
+      - name: accession_number
+        description: "Accession number of the artwork."
+        tests:
+          - not_null
+        
+
+      - name: url
+        description: "Web link to the artwork."
+        tests:
+          - not_null
+          - unique
+
+  
+      - name: date_col
+        description: "Artwork date."
+        tests:
+          - not_null
+
+      - name: date_acquired
+        description: "Date the artwork was acquired."
+        tests:
+          - not_null
+
+      
+      - name: gender
+        description: "Gender of the artist, standardized to Male/Female/Unknown."
+        tests:
+          - not_null
+
+      - name: medium
+        description: "Medium used in artwork."
+        tests:
+          - not_null
+
+      - name: classification
+        description: "Classification of the artwork."
+        tests:
+          - not_null
+
+      - name: nationality
+        description: "Artist nationality."
+        tests:
+          - not_null
+
+      
+      - name: width_cm
+        description: "Width in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: height_cm
+        description: "Height in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: depth_cm
+        description: "Depth in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: weight_kg
+        description: "Weight in kg. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: diameter_cm
+        description: "Diameter in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: duration_sec
+        description: "Duration in seconds. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: seat_height_cm
+        description: "Seat height in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
+
+      - name: circumference_cm
+        description: "Circumference in cm. Non-numeric characters removed."
+        tests:
+          - expression_is_true:
+              expression: "VALUE >= 0"
