@@ -3,7 +3,7 @@ version: 1.0.0
 config-version: 2
 
 models:
-  momo_org:
+  moma_org:
     staging:
       +materialized: view
       +on_schema_change: sync_all_columns
