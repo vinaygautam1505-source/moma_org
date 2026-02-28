@@ -70,7 +70,7 @@ models:
         description: "Department in MoMA."
         tests: []
 
-      - name:CATALOGED
+      - name: CATALOGED
         description: "Cataloged flag."
         tests: []
 
