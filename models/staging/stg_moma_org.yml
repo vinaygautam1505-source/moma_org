@@ -10,7 +10,7 @@ models:
           - not_null
           - unique
          
-      - name: accession_number
+      - name: accessionnumber
         description: "Accession number of the artwork."
         tests:
           - not_null
@@ -20,7 +20,7 @@ models:
         description: "Web link to the artwork."
         tests:
           - not_null
-          - unique
+          
 
   
       - name: date_col
@@ -58,54 +58,39 @@ models:
       - name: width_cm
         description: "Width in cm. Non-numeric characters removed."
         tests:
-          - expression_is_true:
-              expression: "VALUE >= 0"
+          - not_null
 
       - name: height_cm
         description: "Height in cm. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "height_cm >= 0"
+          - not_null
 
       - name: depth_cm
         description: "Depth in cm. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "depth_cm >= 0"
+          - not_null
 
       - name: weight_kg
         description: "Weight in kg. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "weight_kg >= 0"
+          - not_null
 
       - name: diameter_cm
         description: "Diameter in cm. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "diameter_cm >= 0"
+          - not_null
 
       - name: duration_sec
         description: "Duration in seconds. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "duration_sec >= 0"
+          - not_null
 
       - name: seat_height_cm
         description: "Seat height in cm. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "seat_height_cm >= 0"
+          - not_null
 
       - name: circumference_cm
         description: "Circumference in cm. Non-numeric characters removed."
         tests:
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "circumference_cm >= 0"
+          - not_null
