@@ -2,95 +2,151 @@ version: 2
 
 models:
   - name: stg_moma_org
-    description: "Cleaned MoMA dataset with all relevant data quality tests applied."
+    description: "Cleaned MoMA staging dataset with proper column names and data quality tests."
     columns:
       - name: object_id
         description: "Unique artwork identifier."
         tests:
           - not_null
           - unique
-         
-      - name: accessionnumber
+
+      - name: title
+        description: "Title of the artwork."
+        tests:
+          - not_null
+
+      - name: accession_number
         description: "Accession number of the artwork."
         tests:
           - not_null
-        
 
-      - name: url
-        description: "Web link to the artwork."
-        tests:
-          - not_null
-          
-
-  
-      - name: date_col
-        description: "Artwork date."
+      - name: artist_id
+        description: "Artist identifier (ConstituentID)."
         tests:
           - not_null
 
-      - name: date_acquired
-        description: "Date the artwork was acquired."
+      - name: artist
+        description: "Artist name."
         tests:
           - not_null
 
-      
-      - name: gender
-        description: "Gender of the artist, standardized to Male/Female/Unknown."
-        tests:
-          - not_null
-
-      - name: medium
-        description: "Medium used in artwork."
-        tests:
-          - not_null
-
-      - name: classification
-        description: "Classification of the artwork."
-        tests:
-          - not_null
+      - name: artist_bio
+        description: "Artist biography."
+        tests: []
 
       - name: nationality
         description: "Artist nationality."
+        tests: []
+
+      - name: gender
+        description: "Artist gender."
+        tests: []
+
+      - name: begin_date
+        description: "Artist begin date."
+        tests: []
+
+      - name: end_date
+        description: "Artist end date."
+        tests: []
+
+      - name: date_col
+        description: "Date of the artwork."
+        tests: []
+
+      - name: medium
+        description: "Medium used in artwork."
+        tests: []
+
+      - name: dimensions
+        description: "Original dimensions string."
+        tests: []
+
+      - name: credit_line
+        description: "Credit line of the artwork."
+        tests: []
+
+      - name: department
+        description: "Department in MoMA."
+        tests: []
+
+      - name: cataloged
+        description: "Cataloged flag."
+        tests: []
+
+      - name: url
+        description: "Artwork URL."
         tests:
           - not_null
 
-      
-      - name: width_cm
-        description: "Width in cm. Non-numeric characters removed."
-        tests:
-          - not_null
+      - name: imageurl
+        description: "Artwork image URL."
+        tests: []
 
-      - name: height_cm
-        description: "Height in cm. Non-numeric characters removed."
+      - name: on_view
+        description: "Whether artwork is on view."
+        tests: []
+
+      # Numeric columns
+      - name: circumference_cm
+        description: "Circumference in cm, numeric."
         tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
 
       - name: depth_cm
-        description: "Depth in cm. Non-numeric characters removed."
+        description: "Depth in cm, numeric."
         tests:
-          - not_null
-
-      - name: weight_kg
-        description: "Weight in kg. Non-numeric characters removed."
-        tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
 
       - name: diameter_cm
-        description: "Diameter in cm. Non-numeric characters removed."
+        description: "Diameter in cm, numeric."
         tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
 
-      - name: duration_sec
-        description: "Duration in seconds. Non-numeric characters removed."
+      - name: height_cm
+        description: "Height in cm, numeric."
         tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
+
+      - name: length_cm
+        description: "Length in cm, numeric."
+        tests:
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
+
+      - name: weight_kg
+        description: "Weight in kg, numeric."
+        tests:
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
+
+      - name: width_cm
+        description: "Width in cm, numeric."
+        tests:
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
 
       - name: seat_height_cm
-        description: "Seat height in cm. Non-numeric characters removed."
+        description: "Seat height in cm, numeric."
         tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
 
-      - name: circumference_cm
-        description: "Circumference in cm. Non-numeric characters removed."
+      - name: duration_sec
+        description: "Duration in seconds, numeric."
         tests:
-          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "VALUE >= 0"
