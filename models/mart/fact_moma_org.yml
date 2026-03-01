@@ -11,68 +11,71 @@ models:
         description: "Starting year of the artwork (absolute value)"
         tests:
           - not_null
-          - accepted_range:
-              min: 0
-              max: 3000  # realistic year range
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "BEGIN_DATE >= 0 AND BEGIN_DATE <= 3000"
+              
 
       - name: END_DATE
         description: "Ending year of the artwork (absolute value)"
         tests:
-          - accepted_range:
-              min: 0
-              max: 3000
-
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "END_DATE >= 0 AND END_DATE <= 3000"
+                
       - name: DATE_COL
         description: "Generic date column if applicable"
         tests:
           - dbt_utils.expression_is_true:
-              expression: "DATE_COL >= '1900-01-01' AND DATE_COL <= '2100-12-31'"
+              arguments:
+                expression: "DATE_COL >= '1900-01-01' AND DATE_COL <= '2100-12-31'"
               
 
       - name: DEPTH_CM
         description: "Depth in centimeters"
         tests:
           - not_null
-          - accepted_range:
-              min: 0
-              max: 10000
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "DEPTH_CM >= 0 AND DEPTH_CM <= 10000"
 
       - name: WIDTH_CM
         description: "Width in centimeters"
         tests:
           - not_null
-          - accepted_range:
-              min: 0
-              max: 10000
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "WIDTH_CM >= 0 AND WIDTH_CM <= 10000"
 
       - name: HEIGHT_CM
         description: "Height in centimeters"
         tests:
           - not_null
-          - accepted_range:
-              min: 0
-              max: 10000
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "HEIGHT_CM >= 0 AND HEIGHT_CM <= 10000"
 
       - name: LENGTH_CM
         description: "Length in centimeters"
         tests:
-          - accepted_range:
-              min: 0
-              max: 10000
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "LENGTH_CM >= 0 AND LENGTH_CM <= 10000"
 
       - name: WEIGHT_KG
         description: "Weight in kilograms"
         tests:
-          - accepted_range:
-              min: 0
-              max: 10000
+          -  dbt_utils.expression_is_true:
+              arguments:
+                expression: "WEIGHT_KG >= 0 AND WEIGHT_KG <= 10000"
 
       - name: DATE_ACQUIRED
         description: "Date the artwork was acquired"
         tests:
           - not_null
           - dbt_utils.expression_is_true:
-              expression: "DATE_ACQUIRED >= '1900-01-01' AND DATE_ACQUIRED <= '2100-12-31'"
+              arguments:
+                expression: "DATE_ACQUIRED >= '1900-01-01' AND DATE_ACQUIRED <= '2100-12-31'"
     
 
       - name: CONSTITUENTED
@@ -85,21 +88,24 @@ models:
         description: "Duration of the artwork in seconds (if applicable)"
         tests:
           - dbt_utils.expression_is_true:
-              expression: "DURATION_SEC >= 0 AND DURATION_SEC <= 1000000"
+              arguments:
+                expression: "DURATION_SEC >= 0 AND DURATION_SEC <= 1000000"
             
          
       - name: SEAT_HEIGHT_CM
         description: "Seat height in centimeters (if applicable)"
         tests:
           - dbt_utils.expression_is_true:
-              expression: "SEAT_HEIGHT_CM >= 0 AND SEAT_HEIGHT_CM <= 500"
+              arguments:
+                expression: "SEAT_HEIGHT_CM >= 0 AND SEAT_HEIGHT_CM <= 500"
              
 
       - name: DIAMETER_CM
         description: "Diameter in centimeters (if applicable)"
         tests:
           - dbt_utils.expression_is_true:
-              expression: "DIAMETER_CM >= 0 AND DIAMETER_CM <= 1000"
+              arguments:
+                expression: "DIAMETER_CM >= 0 AND DIAMETER_CM <= 1000"
               
 
       - name: ACCESSIONNUMBER
