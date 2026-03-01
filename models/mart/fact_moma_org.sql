@@ -16,4 +16,4 @@ SEAT_HEIGHT_CM,
 DIAMETER_CM,
 ACCESSIONNUMBER
 
-FROM{{ ref('stg_moma_org') }}
+FROM {{ ref('stg_moma_org') }}
