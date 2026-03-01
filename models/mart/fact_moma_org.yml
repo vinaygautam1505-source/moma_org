@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fact_moma
+  - name: fact_moma_org
     description: "Fact table for MOMA artworks with cleaned numeric measures and date references."
     columns:
       - name: OBJECT_ID
