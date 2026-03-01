@@ -13,7 +13,7 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               arguments:
-                expression: "BEGIN_DATE >= 0 AND BEGIN_DATE <= 3000"
+                expression: "BEGIN_DATE >= '1900-01-01' AND BEGIN_DATE <= '2100-12-31'"
               
 
       - name: END_DATE
@@ -21,7 +21,7 @@ models:
         tests:
           - dbt_utils.expression_is_true:
               arguments:
-                expression: "END_DATE >= 0 AND END_DATE <= 3000"
+                expression: "END_DATE >= '1900-01-01' AND END_DATE <= '2100-12-31'"
                 
       - name: DATE_COL
         description: "Generic date column if applicable"
